@@ -1,0 +1,79 @@
+.subscribe{
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subscribe > h1{
+    color: var(--color-text-big);
+    font-size: 2.3rem;
+}
+
+.subscribe > p{
+    color: var(--color-text-sm);
+    max-width: 40%;
+    text-align: center;
+}
+
+.subscribe input{
+    padding: 10px;
+    border: 1px solid #e9eef1;
+    background-color: white;
+    outline-color: var(--color-green-1);
+    font-size: 15px;
+    color: var(--color-text-sm);
+    display: block;
+    width: 20%;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.subscribe__button{
+    background-color: var(--color-green-1);
+    color: white;
+    font-weight: 600;
+    padding: 12px 0;
+    cursor: pointer;
+    border: none;
+    font-size: 15px;
+    transition: opacity 0.5s ease;
+    width: 20%;
+}
+.subscribe__button:hover{
+    opacity: 0.8;
+}
+
+.subscribe > span{
+    margin-top: 30px;
+    font-size: 18px;
+    color: #353640;
+}
+.subscribe .color{
+    color: var(--color-green-2);
+    font-weight: 600;
+    margin: 0 3px;
+}
+
+
+@media screen and (max-width: 700px)  {
+    .subscribe > h1{
+        width: 95%;
+        text-align: center;
+    }
+    .subscribe > p{
+        max-width: 95%;
+    }
+
+    .subscribe__button{
+        width: 90%;
+    }
+    .subscribe input{
+        width: 90%;
+    }
+    .subscribe > span{
+        font-size: 14px;
+        text-align: center;
+        width: 90%;
+    }
+    
+}
