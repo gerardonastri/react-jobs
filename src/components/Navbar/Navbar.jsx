@@ -10,7 +10,9 @@ const Navbar = ({showForm, setShowForm}) => {
         </a>
         <div className="navbar__links">
           <span className="navbar__links-login" onClick={() => setShowForm(true)}>Log In</span>
-          <button>Post a Job</button>
+          <a href="/postjob">
+            <button>Post a Job</button>
+          </a>
         </div>
       </div>
     </div>
