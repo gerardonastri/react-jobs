@@ -72,6 +72,26 @@
     width: 100%;
 }
 
+.postForm__errors{
+    text-align: center;
+    font-size: 16px;
+    color: red;
+    margin-bottom: 20px;
+}
+.formGroup select{
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: var(--color-text-sm);
+    outline-color: rgb(0, 132, 255);
+    font-weight: 600;
+    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyLjQxNiAxNC4zNzZDMTIuMjE4MSAxNC42NzI4IDExLjc4MTkgMTQuNjcyOCAxMS41ODQgMTQuMzc2TDguNTE4MjMgOS43NzczNUM4LjI5NjcyIDkuNDQ1MDcgOC41MzQ5MSA5IDguOTM0MjYgOUwxNS4wNjU3IDlDMTUuNDY1MSA5IDE1LjcwMzMgOS40NDUwNyAxNS40ODE4IDkuNzc3MzVMMTIuNDE2IDE0LjM3NloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=) no-repeat 95% 50%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #f3f3f3;
+
+}
+
 @media screen and (max-width: 700px) {
     .postForm{
         width: 95%;

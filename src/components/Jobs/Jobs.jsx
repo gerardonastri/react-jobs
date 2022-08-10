@@ -3,12 +3,41 @@ import './Jobs.css'
 import {RiArrowDownSFill} from 'react-icons/ri'
 import { useState } from 'react'
 import JobCard from '../JobCard/JobCard'
+import { useEffect } from 'react'
+import {axiosReq} from '../../utils/apiCalls'
+import {RiArrowLeftSLine} from 'react-icons/ri'
+import {MdOutlineKeyboardArrowRight} from 'react-icons/md'
 
 const Jobs = () => {
     const [showType, setShowType] = useState(false)
     const [showCategory, setShowCategory] = useState(false)
     const [showLevel, setShowLevel] = useState(false)
     const [showLocation, setShowLocation] = useState(false)
+
+    const [jobs, setJobs] = useState(null)
+    const [currentPage, setCurrentPage] = useState(1);
+    const [JobPerPage, setJobPerPage] = useState(12);
+
+    useEffect(() => {
+        const getJobs = async () => {
+            try {
+                const res = await axiosReq.get('jobs/')
+                setJobs(res.data)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getJobs()
+    }, [])
+
+    const indexOfLastJob = currentPage * JobPerPage;
+    const indexOfFirstJobs = indexOfLastJob - JobPerPage;
+    const currentJobs = jobs?.slice(indexOfFirstJobs, indexOfLastJob);
+    
+    const handleChange = (page) => {
+        setCurrentPage(page);
+        
+    }
 
   return (
     <div className='jobs'>
@@ -87,16 +116,21 @@ const Jobs = () => {
             </div>
         </div>
         <div className="jobs__card-container">
-            <JobCard />
-            <JobCard />
-            <JobCard />
-            <JobCard />
-            <JobCard />
-            <JobCard />
-            <JobCard />
-            <JobCard />
-            <JobCard />
-            <JobCard />
+            {currentJobs?.map(job => (
+                <JobCard job={job} key={job.id} alt="" />
+            ))}
+        </div>
+        <div className="jobs__card-actions">
+             {currentPage > 1 && (
+                <button onClick={() => handleChange(currentPage - 1)} className="jobs__card-actions_previous">
+                    <RiArrowLeftSLine />
+                    <span>Previous</span>
+                </button>
+            )}
+            <button onClick={() => handleChange(currentPage + 1)} className="jobs__card-actions_next">
+                <span>Next</span>
+                <MdOutlineKeyboardArrowRight />
+            </button>
         </div>
     </div>
   )

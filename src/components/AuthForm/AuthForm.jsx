@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { useState } from 'react'
 import './AuthForm.css'
+import {login, register} from '../../context/authContext/apiCalls'
+import {AuthContext} from '../../context/authContext/AuthContext';
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true)
@@ -8,12 +10,26 @@ const AuthForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleLogin = async () => {
+  const {dispatch} = useContext(AuthContext)
 
+  const handleLogin = async () => {
+   try {
+    await login({email, password}, dispatch)
+    await new Promise(done => setTimeout(() => done(), 3000)); 
+    window.location.replace('/')
+   } catch (error) {
+      console.log(error);
+   }
   }
 
   const handleRegister = async () => {
-
+    try {
+      await register({username: name, email, password,}, dispatch)
+      await new Promise(done => setTimeout(() => done(), 3000)); 
+      window.location.replace('/')
+    } catch (error) {
+      console.log(error);
+    }
   }
 
 
@@ -38,7 +54,7 @@ const AuthForm = () => {
           <label htmlFor="password">Password</label>
           <input type="password" name="password" id="password" placeholder='Passowrd' onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <button>Login</button>
+        <button onClick={isLogin ? handleLogin : handleRegister}>{isLogin ? 'Login' : 'Register' }</button>
       </div>
       <div className="authForm__switch-container">
           {isLogin ? (

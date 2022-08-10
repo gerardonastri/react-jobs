@@ -51,4 +51,12 @@
     .navbar__wrapper{
         padding: 0 15px;
     }
+    .navbar{
+        height: 90px;
+    }
+    .navbar__wrapper{
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+    }
 }

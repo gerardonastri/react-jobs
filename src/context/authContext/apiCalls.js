@@ -4,8 +4,8 @@ import {loginFailure, loginStart, loginSuccess} from './actions'
 export const login = async (user,dispatch) =>{
     dispatch(loginStart());
     try {
-        const res = await axiosReq.post("auth/login", {
-            username: user.username,
+        const res = await axiosReq.post("auth/login/", {
+            email: user.email,
             password: user.password
         });
         dispatch(loginSuccess(res.data))
@@ -14,14 +14,13 @@ export const login = async (user,dispatch) =>{
     }
 }
 
-export const register = async ({username, email, password,profilePicture}, dispatch) =>{
+export const register = async ({username, email, password}, dispatch) =>{
     dispatch(loginStart());
     try {
-        const res = await axiosReq.post("auth/register", {
+        const res = await axiosReq.post("auth/register/", {
             username,
             email,
-            password,
-            profilePicture
+            password
         });
         dispatch(loginSuccess(res.data))
     } catch (error) {
